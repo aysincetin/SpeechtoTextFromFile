@@ -10,12 +10,12 @@ namespace cog_service_demo
     {
         public static async Task ContinuousRecognitionWithFileAsync()
         {
-            var config = SpeechConfig.FromSubscription("cf1346c230dc41c78343351fb23dd371", "westeurope");
+            var config = SpeechConfig.FromSubscription("yourKey", "yourRegion");
             config.SpeechRecognitionLanguage = "tr-TR";
 
             var stopRecognition = new TaskCompletionSource<int>();
 
-            using (var audioInput = AudioConfig.FromWavFileInput("C:/Users/acetin/OneDrive - DATA MARKET BILGI HIZM. A.S/Desktop/audio-only-part-1.wav"))
+            using (var audioInput = AudioConfig.FromWavFileInput("yourAudioPath.wav"))
             {
                 using (var recognizer = new SpeechRecognizer(config, audioInput))
                 {
@@ -64,8 +64,7 @@ namespace cog_service_demo
 
         async static Task Main(string[] args)
         {
-
-           /* FileStream filestream = new FileStream("out2.txt", FileMode.Create);
+           /* FileStream filestream = new FileStream("out.txt", FileMode.Create);
             var streamwriter = new StreamWriter(filestream);
             streamwriter.AutoFlush = true;
             Console.SetOut(streamwriter);
